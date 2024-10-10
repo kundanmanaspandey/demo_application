@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+App Page
+{% endblock %}
+
+{% block content %}
+<h1>Explore all app</h1>
+
+<div class="grid grid-cols-3 gap-4 m-4">
+
+{% for demo_app in apps %}
+    <div class= "bg-red-200 p-5 rounded">
+        <img class="rounded shadow-lg" src="{{demo_app.image.url}}" alt="">
+        <h3 class="text-2xl font-bold">{{demo_app.name}}</h3>
+        <a href="{% url 'demo_app_detail' demo_app.id %}">
+            <button
+            type="button"
+            class="inline-flex items-center w-[100] justify-center px-4 py-2
+            border border-transparent text-sm font-medium rounded-md
+            text-white bg-orange-600 hover:bg-orange-700
+            focus:outline-none focus:ring-2 focus:ring-offset-2
+            focus:ring-orange-500"
+            >
+                {{demo_app.type}} - {{demo_app.id}}
+            </button>
+    </div>
+{% endfor %}
+
+</div>
+
+{% endblock %}
+
